@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "588b361c-3d61-4142-8180-cceea8f1df3f",
+		"name": "AULA-API-T3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31703696"
+	},
+	"item": [
+		{
+			"name": "Listar todos objetos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1002);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{URL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar objetos por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}?id=3&id=5&id=10",
+					"host": [
+						"{{URL}}"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						},
+						{
+							"key": "id",
+							"value": "5"
+						},
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Único objeto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{URL}}/7"
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar objeto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"iPad Azul\",\r\n   \"data\": {\r\n      \"year\": 2022,\r\n      \"price\": 1.99,\r\n      \"CPU model\": \"N1\",\r\n      \"Hard disk size\": \"64 GB\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{URL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar objeto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"BMW M3\",\r\n   \"data\": {\r\n      \"year\": 2024,\r\n      \"price\": 49999.99,\r\n      \"CPU model\": \"2.0 Turbo\",\r\n      \"Hard disk size\": \"50 lt\",\r\n      \"color\": \"giz\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{URL}}/ff8081818c01d7ae018c51e32d815468"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar parcialmente",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Porsche 911\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{URL}}/ff8081818c01d7ae018c51e32d815468"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar objeto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{URL}}/ff8081818c01d7ae018c51e32d815468"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://api.restful-api.dev/objects"
+		}
+	]
+}
